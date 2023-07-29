@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SmothHeal - Home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Welcome to SmothHeal!</h1>
+    <p>Track your health-related activities and earn token rewards.</p>
+
+    <form action="{{ url_for('rewards') }}" method="post">
+        <label for="address">Enter your Theta address:</label>
+        <input type="text" id="address" name="address" required>
+        <input type="submit" value="Check Rewards">
+    </form>
+</body>
+</html>

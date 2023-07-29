@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Register System{% endblock %}
+
+{% block content %}
+
+{% if message  %}
+    <div class="alert alert-secondary" role="alert">
+        <p>{{ message }}</p>
+    </div>
+{% endif %}
+
+<form action="" method="post">
+    <div class="form-group">
+        <label for="inputFirstName">First name</label>
+        <input name="firstname" class="form-control" id="inputFirstName" aria-describedby="firstNameHelp" placeholder="Enter first name">
+        <small id="firstNameHelp" class="form-text text-muted">Please enter your first name</small>
+    </div>
+    <div class="form-group">
+        <label for="inputLastName">Last name</label>
+        <input name="lastname" class="form-control" id="inputLastName" aria-describedby="lastNameHelp" placeholder="Enter last name">
+        <small id="lastNameHelp" class="form-text text-muted">Please enter your last name</small>
+    </div>
+    <div class="form-group">
+        <label for="inputEmail">Email address</label>
+        <input name="email" class="form-control" id="inputEmail"  placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword">Password</label>
+        <input type="password" name="password1" class="form-control" id="inputPassword" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <label for="inputPassword2">Repeat Password</label>
+        <input type="password" name="password2" class="form-control" id="inputPassword2" placeholder="Repeat Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}
