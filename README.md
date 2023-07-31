@@ -1,12 +1,9 @@
-# Speech-to-Text
-## Heroku Deploy here : [https://speech-to-text1.herokuapp.com/](https://speech-to-text1.herokuapp.com/)
-### ([Flask](https://github.com/pallets/flask) + [Heroku](https://www.heroku.com/) + [SpeechRecognition](https://pypi.org/project/SpeechRecognition/) + [Recorderjs](https://github.com/mattdiamond/Recorderjs))
+# Fruity
+## Vercel Deploy here : [https://fruity-blond.vercel.app/)
 
 1) Flask is a micro web framework written in Python.
-2) SpeechRecognition Library for performing speech recognition, with support for several engines and APIs, online and offline.
-3) Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
-4) Recorderjs A plugin for recording/exporting the output of Web Audio API nodes 
+2) tidb is used to create clusters for serverless database used for work.
+3) vercel is a platform for hosting site. 
 
 
-![Image-1](https://raw.githubusercontent.com/Vatsalparsaniya/Flask-speech-to-text/master/upload/sptsc2.PNG?token=AIDJHSG5LBIYAWTD5VMKBTS63TBKI)
-![Image-2](https://raw.githubusercontent.com/Vatsalparsaniya/Flask-speech-to-text/master/upload/sptsc1.PNG?token=AIDJHSDDF5ZNLL3GZ6OB4JC63TBGQ)
+![Image-1](https://images.unsplash.com/photo-1619566636858-adf3ef46400b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dauto=format&fit=crop&w=1170&q=80)

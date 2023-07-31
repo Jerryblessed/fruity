@@ -1,12 +1,38 @@
 from flask import Flask, render_template, request, url_for, redirect, session
 import pymongo
 import bcrypt
+import json
+import mysql.connector
 
 app = Flask(__name__)
 app.secret_key = "testing"
 client = pymongo.MongoClient('mongodb+srv://teslasacademicgroup:oDELC6JXdmB8w84Q@cluster0.gvzgh2h.mongodb.net/?retryWrites=true&w=majority')
 db = client.get_database('total_records')
 records = db.register
+
+config = {
+  'host': 'gateway01.eu-central-1.prod.aws.tidbcloud.com',
+  'port': 4000,
+  'user': '4LqKgTg4CQHvYTu.demo_client',
+  'password': 'avt5elBOHaOi8sgD',
+  'database': 'demo',
+
+}
+
+@app.route('/fruit', methods=['GET'])
+def rfid():
+    conn = mysql.connector.connect(**config)
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM fruit')
+    
+    row_headers=[x[0] for x in cursor.description]
+    myresult = cursor.fetchall()
+    json_data=[]
+    for result in myresult:
+        json_data.append(dict(zip(row_headers,result)))
+        
+    # return json.dumps(json_data)
+    return json.dumps(json_data)
 
 
 # Route for the landing page
@@ -101,44 +127,3 @@ def logout():
     
 if __name__ == "__main__":
   app.run(debug=True)
-
-# # let's import the flask
-# from flask import Flask, render_template, request, redirect, url_for
-# import os # importing operating system module
-
-# app = Flask(__name__)
-# # to stop caching static file
-# app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
-
-
-
-# @app.route('/') # this decorator create the home route
-# def home ():
-#     techs = ['HTML', 'CSS', 'Flask', 'Python']
-#     name = '30 Days Of Python Programming'
-#     return render_template('home.html', techs=techs, name = name, title = 'Home')
-
-# @app.route('/about')
-# def about():
-#     name = '30 Days Of Python Programming'
-#     return render_template('about.html', name = name, title = 'About Us')
-
-# @app.route('/result')
-# def result():
-#     return render_template('result.html')
-
-# @app.route('/post', methods= ['GET','POST'])
-# def post():
-#     name = 'Text Analyzer'
-#     if request.method == 'GET':
-#          return render_template('post.html', name = name, title = name)
-#     if request.method =='POST':
-#         content = request.form['content']
-#         print(content)
-#         return redirect(url_for('result'))
-
-# if __name__ == '__main__':
-#     # for deployment
-#     # to make it work for both production and development
-#     port = int(os.environ.get("PORT", 5000))
-#     app.run(debug=True, host='0.0.0.0', port=port)

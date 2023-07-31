@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subscription Form</title>
+</head>
+<body>
+    <h1>Subscription Form</h1>
+    <form method="POST" action="/subscribe">
+        <label for="email">Email:</label>
+        <input type="email" name="email" required><br><br>
+        
+        <label for="plan">Select a Plan:</label>
+        <select name="plan" required>
+            <option value="PLAN_ID_1">Plan 1</option>
+            <option value="PLAN_ID_2">Plan 2</option>
+            <!-- Add more plan options if needed -->
+        </select><br><br>
+        
+        <input type="submit" value="Subscribe">
+    </form>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Chat</h1>
+
+    <h3>Online Users</h3>
+    <ul id="user-list">
+        {% for user in online_users %}
+        <li><a href="{{ url_for('start_chat', receiver=user.email) }}">{{ user.firstname }} {{ user.lastname }}</a></li>
+        {% endfor %}
+    </ul>
+
+    {% if sender and receiver %}
+    <h3>Chat History</h3>
+    <div id="chat-messages">
+        {% for message in chat_history %}
+        <p>{{ message.sender }}: {{ message.message }}</p>
+        {% endfor %}
+    </div>
+
+    <input id="message-input" type="text" placeholder="Type your message" autofocus>
+    <button id="send-button">Send</button>
+
+    <script type="text/javascript">
+        var socket = io();
+
+        // Receive new message from the server
+        socket.on('message', function(chat_message) {
+            var messageElement = document.createElement('p');
+            messageElement.innerText = chat_message.sender + ': ' + chat_message.message;
+            document.getElementById('chat-messages').appendChild(messageElement);
+        });
+
+        // Send message to the server when the Send button is clicked or Enter key is pressed
+        $('#send-button').click(function() {
+            var receiver = "{{ receiver }}";
+            var message = $('#message-input').val();
+            socket.emit('message', {'receiver': receiver, 'message': message});
+            $('#message-input').val('');
+        });
+
+        $('#message-input').keypress(function(event) {
+            if (event.which === 13) {
+                $('#send-button').click();
+            }
+        });
+    </script>
+    {% endif %}
+</body>
+</html>

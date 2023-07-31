@@ -1,8 +1,41 @@
 {% extends "base.html" %}
-{% block title %}You've logged in{% endblock %}
+
+{% block title %}Fruit Spotlight: {{ fruitname }}{% endblock %}
 
 {% block content %}
-<p>Hello, you have logged in as {{ email }}</p>
-<p>Your name is {{ firstname }}</p>
+<div class="blog-post">
+  <h2>Fruit Spotlight: {{ fruitname }}</h2>
+  <p class="author">Posted by {{ author }} on {{ post_date }}</p>
 
+  <img src="{{ fruit_image }}" alt="{{ fruitname }}" class="fruit-image">
+
+  <h3>Introduction</h3>
+  <p>Learn about the amazing health benefits of {{ fruitname }} and how it can contribute to your overall well-being.</p>
+
+  <h3>Nutritional Value</h3>
+  <p>{{ fruitname }} is rich in vitamins, minerals, and antioxidants, including {{ nutrients }}. It provides essential nutrients that are beneficial for various bodily functions.</p>
+
+  <h3>Health Benefits</h3>
+  <p>{{ fruitname }} has been linked to numerous health benefits, such as:</p>
+  <ul>
+    <li>{{ benefit1 }}</li>
+    <li>{{ benefit2 }}</li>
+    <li>{{ benefit3 }}</li>
+    <!-- Add more health benefits as needed -->
+  </ul>
+
+  <h3>Recommended Intake</h3>
+  <p>To enjoy the full benefits of {{ fruitname }}, it is recommended to include it in your daily diet. Consult with a healthcare professional for personalized dietary recommendations.</p>
+
+  <h3>Precautions</h3>
+  <p>While {{ fruitname }} offers various health benefits, individuals with certain medical conditions or allergies should exercise caution and seek medical advice before consuming it.</p>
+
+  <h3>Incorporate {{ fruitname }} into Your Diet</h3>
+  <p>Explore delicious and nutritious recipes that feature {{ fruitname }} to make it a delightful addition to your meals and snacks.</p>
+
+  <h3>Conclusion</h3>
+  <p>Discover the numerous health advantages of {{ fruitname }} and savor its flavors while supporting your journey towards a healthier lifestyle.</p>
+
+  <p>Stay tuned for more informative posts on other fruits and healthy living tips!</p>
+</div>
 {% endblock %}
